@@ -1,14 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            display: none;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        $(function () {
+            //点击按钮后产生动画
+            $("button:eq(0)").click(function () {
+
+                //滑入动画： slideDown(毫秒值，回调函数[显示完毕执行什么]);
+                $("div").slideDown(2000, function () {
+                    alert("动画执行完毕！");
+                });
+            })
+
+            //滑出动画
+            $("button:eq(1)").click(function () {
+
+                //滑出动画：slideUp(毫秒值，回调函数[显示完毕后执行什么]);
+                $("div").slideUp(2000, function () {
+                    alert("动画执行完毕！");
+                });
+            })
+
+            $("button:eq(2)").click(function () {
+                //滑入滑出切换（同样有四种用法）
+                $("div").slideToggle(1000);
+            })
+
+        })
+    </script>
+
+
 </head>
+
 <body>
+
+    <button>滑入</button>
+    <button>滑出</button>
+    <button>切换</button>
+    <div></div>
+
+    <script>
+        //入口函数
+        jQuery(document).ready(function () {
+
+            //三种方式获取jquery对象
+            var jqBox1 = $("#box");
+            var jqBox2 = $(".box");
+            var jqBox3 = $("div");
+
+            //操作标签选择器
+            jqBox3.css("width", 100);
+            jqBox3.css("height", 100);
+            jqBox3.css("margin", 10);
+            jqBox3.css("background", "pink");
+
+            //操作类选择器(隐式迭代，不用一个一个设置)
+            jqBox2.css("background", "red");
+
+            //操作id选择器
+            jqBox1.css("background", "yellow");
+
+        });
+
+    </script>
+
+
     <!-- 第一种js调用方法  行内式 -->
-    <input  type="button"   value="点我点我"    onclick="alert('这是第一种  行内式 !')">
+    <input type="button" value="点我点我" onclick="alert('这是第一种  行内式 !')">
 
     <!-- 第二种js调用方法 内联式 -->
     <script type="text/javascript">
@@ -19,5 +94,8 @@
 
     <!-- 第三种js调用方法  外链式 -->
     <script src="../js/index.js"></script>
+
+
 </body>
+
 </html>
